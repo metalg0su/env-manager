@@ -1,11 +1,15 @@
 [alias]
 	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
+    dtool = difftool
 [user]
 	name = metalg0su
 	email = metalg0su@gmail.com
 	name = Seongjun
-	name = Seongjun
 [core]
 	editor = vim
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
 [push]
 	default = current
