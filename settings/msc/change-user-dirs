@@ -1,0 +1,12 @@
+# ref. https://harryp.tistory.com/343
+~/.config/user-dirs.dirs
+
+XDG_DESKTOP_DIR="$HOME/desktop"
+XDG_DOWNLOAD_DIR="$HOME/downloads"
+XDG_TEMPLATES_DIR="$HOME/"
+XDG_PUBLICSHARE_DIR="$HOME/"
+XDG_DOCUMENTS_DIR="$HOME/문서"
+XDG_MUSIC_DIR="$HOME/음악"
+XDG_PICTURES_DIR="$HOME/사진"
+XDG_VIDEOS_DIR="$HOME/비디오"
+

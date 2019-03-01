@@ -1,0 +1,11 @@
+# 우분투에서 Locale을 변경하는 방법은 아래와 같습니다. 먼저 한글 패키지를 설치해 주세요.(이미 깔려있을수도 있습니다.)
+sudo apt-get install language-pack-ko
+
+# 그 다음으로는 locale-gen을 통해 Locale을 설치해 줍시다.
+sudo locale-gen ko_KR.UTF-8
+
+# /etc/default/locale
+LANG=ko_KR.UTF-8
+LC_MESSAGES=POSIX
+
+# ref. https://beomi.github.io/2017/07/10/Ubuntu-Locale-to-ko_KR/

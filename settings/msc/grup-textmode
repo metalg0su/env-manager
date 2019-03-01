@@ -1,0 +1,20 @@
+# without GUI (gnome)
+sudo vi /etc/default/grup -> GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"
+
+# To disable GUI on boot, run:
+sudo systemctl set-default multi-user.target
+
+# To enable GUI again issue the command:
+sudo systemctl set-default graphical.target
+
+# 아래 처럼 되어 있는 설정 값에 주석을 제거하고 원하는 해상도를 넣음
+#GRUB_GFXMODE=600x480
+
+# Leave this line as a comment:
+#GRUB_GFXMODE=640x480
+
+# At the end of the file, add a line:
+GRUB_GFXPAYLOAD_LINUX=1280x1024x16
+
+# 재시작
+
