@@ -1,0 +1,11 @@
+[alias]
+	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
+[user]
+	name = metalg0su
+	email = metalg0su@gmail.com
+	name = Seongjun
+	name = Seongjun
+[core]
+	editor = vim
+[push]
+	default = current
