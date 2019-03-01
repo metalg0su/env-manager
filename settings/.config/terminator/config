@@ -1,0 +1,27 @@
+[global_config]
+  borderless = True
+  focus = system
+  handle_size = 0
+  tab_position = bottom
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 1000, 600
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.8
+    background_type = transparent
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+    font = 나눔고딕코딩 10
+    scroll_on_output = True
+    scrollback_lines = 20000
+    scrollbar_position = hidden
+    show_titlebar = False
