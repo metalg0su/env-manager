@@ -6,6 +6,11 @@ vim
 neofetch
 w3m
 w3m-img
+peco # inside file querying
+tig # git manager
+ncdu # what the hell is eating my drive's space!
+figlet # zzzzzz
+
 
 #--- directory explorer
 # note that after installation 'ranger', $ ranger --copy-config=all
