@@ -4,6 +4,17 @@ tmux
 tmuxinator
 vim
 neofetch
+w3m
+w3m-img
+
+#--- directory explorer
+# note that after installation 'ranger', $ ranger --copy-config=all
+ranger
+highlight
+caca-utils
+poppler-utils
+atool
+
 
 ##----- graphical themes
 #--- basics
