@@ -1,6 +1,8 @@
 [alias]
 	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
     dtool = difftool
+    s = status
+    ck = checkout
 [user]
 	name = metalg0su
 	email = metalg0su@gmail.com
