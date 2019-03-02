@@ -24,6 +24,7 @@ set tabstop=4
 set ruler " 현재 커서 위치 표시
 set incsearch
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+set cursorline
 
 " 마지막으로 수정된 곳에 커서를 위치함
 au BufReadPost *
