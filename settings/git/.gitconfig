@@ -1,7 +1,7 @@
 [alias]
 	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
-    dtool = difftool
     s = status
+    sync-force = !git branch | xargs git branch -D
     ck = checkout
 [user]
 	name = metalg0su
@@ -9,9 +9,11 @@
 	name = Seongjun
 [core]
 	editor = vim
-[diff]
-    tool = vimdiff
 [difftool]
     prompt = false
 [push]
 	default = current
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
