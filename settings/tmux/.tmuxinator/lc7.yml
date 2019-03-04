@@ -7,7 +7,7 @@ root: ~/projects/loopchain
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre:  git fetch && git checkout develop 
+pre:  git fetch && git checkout develop && git rebase origin/develop && git reset HEAD --hard 
 
 
 # Runs in each window and peer before window/peer specific commands. Useful for setting up interpreter versions.
