@@ -3,8 +3,8 @@
     s = status
     sync-force = !git branch | xargs git branch -D
     ck = checkout
+    tagprune = fetch origin --prune +refs/tags/*:refs/tags/* 
 [user]
-	name = metalg0su
 	email = metalg0su@gmail.com
 	name = Seongjun
 [core]
