@@ -1,6 +1,6 @@
 # ~/.tmuxinator/lc.yml
 
-name: lc
+name: sync-test 
 root: ~/projects/loopchain 
 
 # Optional tmux socket
@@ -45,31 +45,15 @@ windows:
         pre:
         layout: main-vertical
         panes: 
-            - peer0:
-                - printf '\033]2;%s\033\\' 'peer0(7100)'
+            - peer_orig:
+                - printf '\033]2;%s\033\\' 'peer_orig(7100)'
                 - sleep 1
                 - loop peer -d -o _tools/test_0_conf.json
-            - peer1:
-                - printf '\033]2;%s\033\\' 'peer1(7200)'
+            - simple_peer:
+                - printf '\033]2;%s\033\\' 'simple_peer(7200)'
                 - sleep 2
                 - loop peer -d -o _tools/test_1_conf.json
-            - peer2:
-                - printf '\033]2;%s\033\\' 'peer2(7300)'
+            - citizen:
+                - printf '\033]2;%s\033\\' 'citizen(7300)'
                 - sleep 3
-                - loop peer -d -o _tools/test_2_conf.json
-            - peer3:
-                - printf '\033]2;%s\033\\' 'peer3(7400)'
-                - sleep 14
-                - loop peer -d -o _tools/test_3_conf.json
-            - peer4:
-                - printf '\033]2;%s\033\\' 'peer4(7500)'
-                - sleep 15
-                - loop peer -d -o _tools/test_4_conf.json
-            - peer5:
-                - printf '\033]2;%s\033\\' 'peer5(7500)'
-                - sleep 16
-                - loop peer -d -o _tools/test_5_conf.json
-            - peer6:
-                - printf '\033]2;%s\033\\' 'peer6(7600)'
-                - sleep 17
-                - loop peer -d -o _tools/test_6_conf.json
+                - loop citizen -d -o _tools/test_2_conf.json -r 127.0.0.1:9000

@@ -1,6 +1,6 @@
 # ~/.tmuxinator/lc.yml
 
-name: lc
+name: peers7 
 root: ~/projects/loopchain 
 
 # Optional tmux socket
