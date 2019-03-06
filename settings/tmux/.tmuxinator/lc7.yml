@@ -7,7 +7,7 @@ root: ~/projects/loopchain
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre:  git fetch && git checkout develop 
+# pre:  git fetch && git checkout develop 
 
 
 # Runs in each window and peer before window/peer specific commands. Useful for setting up interpreter versions.
@@ -26,23 +26,13 @@ pre_window: source venv/bin/activate
 # startup_peer: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
-# attach: false
+attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t loop
 
 windows:
-    - console:
-        pre: 
-        panes:
-            - gtool:
-                - printf '\033]2;%s\033\\' 'gtool'
-                - loop admin
-            - demotool:
-                - printf '\033]2;%s\033\\' 'demotool'
-                - loop tool
     - peers:
-        pre:
         layout: main-vertical
         panes: 
             - peer0:
