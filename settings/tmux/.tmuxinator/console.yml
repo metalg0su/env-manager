@@ -37,7 +37,7 @@ windows:
         panes: 
             - gtool:
                 - printf '\033]2;%s\033\\' 'gtool'
-                - ~/loop_admin.sh
+                - ~/loop_admin.sh .
             - demotool:
                 - printf '\033]2;%s\033\\' 'demotool'
                 - ~/loop_demotool.sh .
