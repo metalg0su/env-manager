@@ -1,3 +1,15 @@
+htop
+python3
+qdirstat # for xwindows? 
+slack-desktop
+sed-gnu # this is for osx.. i think
+sqlite3
+steam-launcher
+synology-drive
+terminator
+tree
+xclip
+
 ##----- for the unix-Porn!! 
 #--- terminal
 tmux
