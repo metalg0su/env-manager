@@ -1,5 +1,6 @@
 [alias]
 	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
+    tree-all = !git log --graph --decorate $(git rev-list -g --all)
     s = status
     sync-force = !git branch | xargs git branch -D
     ck = checkout
