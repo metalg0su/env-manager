@@ -35,9 +35,11 @@ windows:
     - peers:
         layout: main-vertical
         panes: 
-            <% for i in 0..@args[0] do %>
-            - peer<% @i %>:
-                - printf '\033]2;%s\033\\' 'peer<% @i %>(7<% @i + 1 %>00)'
-                - sleep @i 
-                - loop peer -d -o _tools/test_<% @i %>_conf.json
+            <% x = @args[0].to_i %>
+            <% (1..x).each do |i| %>
+            - peer <%= i %>:
+                - printf '\033]2;%s\033\\' 'peer<%= i-1 %>(7<%= i %>00)'
+                - sleep <%= i %>
+                - loop peer -d -o _tools/test_<%= i-1 %>_conf.json
             <% end %>
+                
