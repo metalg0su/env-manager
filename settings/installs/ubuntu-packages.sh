@@ -1,3 +1,15 @@
+htop
+python3
+qdirstat # for xwindows? 
+slack-desktop
+sed-gnu # this is for osx.. i think
+sqlite3
+steam-launcher
+synology-drive
+terminator
+tree
+xclip
+
 ##----- for the unix-Porn!! 
 #--- terminal
 tmux
@@ -6,6 +18,11 @@ vim
 neofetch
 w3m
 w3m-img
+peco # inside file querying
+tig # git manager
+ncdu # what the hell is eating my drive's space!
+figlet # zzzzzz
+
 
 #--- directory explorer
 # note that after installation 'ranger', $ ranger --copy-config=all
