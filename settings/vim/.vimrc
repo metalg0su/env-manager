@@ -63,7 +63,9 @@ call vundle#begin()
      
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'scrooloose/syntastic' " syntax error finder
+    Plugin 'scrooloose/vim-slumlord' " uml syntax and show preview!?!?
+    Plugin 'aklt/plantuml-syntax' " uml syntax
+    " Plugin 'scrooloose/syntastic' " syntax error finder
     Plugin 'ctrlpvim/ctrlp.vim' " global finder
     Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
     Plugin 'chrisbra/csv.vim' " for csv file
@@ -101,3 +103,13 @@ let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보
 let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
+
+" for syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
