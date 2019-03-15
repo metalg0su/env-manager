@@ -69,8 +69,7 @@ call vundle#begin()
     Plugin 'ctrlpvim/ctrlp.vim' " global finder
     Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
     Plugin 'chrisbra/csv.vim' " for csv file
-    
-    
+    Plugin 'davidhalter/jedi-vim' " autoCompletion
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
