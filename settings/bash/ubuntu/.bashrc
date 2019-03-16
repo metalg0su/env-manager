@@ -138,3 +138,4 @@ export HISTTIMEFORMAT="%Y/%m/%d %H:%M |  "
 # vi mode
 set -o vi
 
+export TERM=xterm-256color
