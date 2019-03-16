@@ -63,9 +63,7 @@ call vundle#begin()
      
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'scrooloose/vim-slumlord' " uml syntax and show preview!?!?
     Plugin 'aklt/plantuml-syntax' " uml syntax
-    " Plugin 'scrooloose/syntastic' " syntax error finder
     Plugin 'ctrlpvim/ctrlp.vim' " global finder
     Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
     Plugin 'chrisbra/csv.vim' " for csv file
