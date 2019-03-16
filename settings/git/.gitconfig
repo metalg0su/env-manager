@@ -7,7 +7,7 @@
     tagprune = fetch origin --prune +refs/tags/*:refs/tags/* 
 [user]
 	email = metalg0su@gmail.com
-	name = Seongjun
+	name = Seongjun Ji
 [core]
 	editor = vim
 [difftool]
