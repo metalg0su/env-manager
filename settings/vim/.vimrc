@@ -26,6 +26,27 @@ set incsearch
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 set cursorline
 
+" 버퍼 감추기
+set hidden
+
+
+" 버퍼 새로 열기
+" 원래 이 단축키로 바인딩해 두었던 :tabnew를 대체한다.
+nmap <leader>T :enew<cr>
+
+" 다음 버퍼로 이동
+nmap <leader>l :bnext<CR>
+
+" 이전 버퍼로 이동
+nmap <leader>h :bprevious<CR>
+
+" 현재 버퍼를 닫고 이전 버퍼로 이동
+" 탭 닫기 단축키를 대체한다.
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" 모든 버퍼와 각 버퍼 상태 출력
+nmap <leader>bl :ls<CR>
+
 " 마지막으로 수정된 곳에 커서를 위치함
 au BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
