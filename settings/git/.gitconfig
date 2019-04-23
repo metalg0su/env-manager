@@ -4,6 +4,7 @@
     s = status
     sync-force = !git branch | xargs git branch -D
     ck = checkout
+    cp = cherry-pick
     tagprune = fetch origin --prune +refs/tags/*:refs/tags/* 
 [user]
 	email = metalg0su@gmail.com
@@ -11,7 +12,7 @@
 [core]
 	editor = vim
 [difftool]
-    prompt = false
+    prompt = true
 [push]
 	default = current
 [diff]
