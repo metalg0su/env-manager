@@ -66,6 +66,11 @@ colorscheme jellybeans
 nnoremap / /\v
 vnoremap / /\v
 
+" folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " Vundle
 set nocompatible              " be iMproved, required
