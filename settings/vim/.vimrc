@@ -66,6 +66,11 @@ colorscheme jellybeans
 nnoremap / /\v
 vnoremap / /\v
 
+" folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " Vundle
 set nocompatible              " be iMproved, required
@@ -89,6 +94,7 @@ call vundle#begin()
     Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
     Plugin 'chrisbra/csv.vim' " for csv file
     Plugin 'davidhalter/jedi-vim' " autoCompletion
+    Plugin 'martinda/Jenkinsfile-vim-syntax' " Jenkins linter
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required

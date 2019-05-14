@@ -24,3 +24,5 @@
 	ui = auto
 	branch = auto
 	status = auto
+[commit]
+	verbose = true
