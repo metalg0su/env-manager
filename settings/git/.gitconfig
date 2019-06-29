@@ -1,11 +1,15 @@
 [alias]
-	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
-    tree-all = !git log --graph --decorate $(git rev-list -g --all)
     s = status
-    sync-force = !git branch | xargs git branch -D
+    ss = status -s
     ck = checkout
     cp = cherry-pick
-    tagprune = fetch origin --prune +refs/tags/*:refs/tags/* 
+    br = branch -vv
+
+	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
+    lg = log --graph --decorate --oneline
+    sync-force = !git branch | xargs git branch -D
+
+    alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
 [user]
 	email = metalg0su@gmail.com
 	name = Seongjun Ji
