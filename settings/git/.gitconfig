@@ -15,6 +15,7 @@
 	name = Seongjun Ji
 [core]
 	editor = vim
+	quotepath = false
 [difftool]
     prompt = true
 [push]
