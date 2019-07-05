@@ -22,6 +22,7 @@ set lazyredraw " Don’t update screen during macro and script execution.
 " Text Rendering Options
 """""""""""""""""""""
 set encoding=utf-8 " Use an encoding that supports unicode.
+set fileencodings=utf-8
 set linebreak " Avoid wrapping a line in the middle of a word.
 set scrolloff=1 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=5 " The number of screen columns to keep to the left and right of the cursor.
@@ -166,7 +167,7 @@ function! NewTemplate()
         echo $HOME
         echo wiki.path
         echo expand('%:p:h') . '/' 
-        if expand('%:p:h') . '/' == wiki.path
+        if expand('%:p:h') . '/' =~ wiki.path
             echo "This file is under the wiki path"
             let l:wiki_directory = v:true
             break
@@ -184,19 +185,11 @@ function! NewTemplate()
 
     let l:template = []
     call add(l:template, '---')
-    call add(l:template, 'layout  : wiki')
-    call add(l:template, 'title   : ')
-    call add(l:template, 'summary : ')
     call add(l:template, 'date    : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
     call add(l:template, 'updated : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
-    call add(l:template, 'tags    : ')
-    call add(l:template, 'toc     : true')
-    call add(l:template, 'public  : true')
-    call add(l:template, 'parent  : ')
-    call add(l:template, 'latex   : false')
     call add(l:template, '---')
-    call add(l:template, '* TOC')
-    call add(l:template, '{:toc}')
+    call add(l:template, '# TOC')
+    call add(l:template, '[[_TOC_]]')
     call add(l:template, '')
     call add(l:template, '# ')
     call setline(1, l:template)
