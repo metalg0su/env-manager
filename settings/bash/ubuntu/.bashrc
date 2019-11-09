@@ -135,3 +135,7 @@ export PS1="\[\e[33m\]\u\[\e[m\]@\[\e[32;40m\]\h\[\e[m\]:\[\e[31m\]\w\[\e[m\]\[\
 export HISTSIZE=20000
 export HISTTIMEFORMAT="%Y/%m/%d %H:%M |  "
 
+# vi mode
+set -o vi
+
+export TERM=xterm-256color
