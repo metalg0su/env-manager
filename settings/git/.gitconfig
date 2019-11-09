@@ -31,3 +31,5 @@
 	status = auto
 [commit]
 	verbose = true
+[mergetool]
+	keepBackup = false
