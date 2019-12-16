@@ -2,3 +2,4 @@ bundle/
 *.swp
 .netrwhist
 syntax/
+.idea

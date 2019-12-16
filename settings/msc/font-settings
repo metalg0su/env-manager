@@ -1,4 +1,0 @@
-$ apt-get install fonts-nanum fonts-nanum-coding fonts-nanum-extra
-sudo dpkg-reconfigure console-setup 
-
-출처: https://findnew.tistory.com/22 [풀스택초보]
