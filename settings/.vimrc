@@ -74,13 +74,10 @@ au BufReadPost *
 \ exe "norm g`\"" |
 \ endif
 
-" 파일 인코딩을 한국어로
 if $LANG[0]=='k' && $LANG[1]=='o'
 set fileencoding=korea
 endif
 
-
-" 컬러 스킴 사용
 colorscheme jellybeans
 
 """""""""""""""""""""
@@ -92,9 +89,6 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
-
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
@@ -107,7 +101,6 @@ call vundle#begin()
     Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
     Plugin 'chrisbra/csv.vim' " for csv file
     Plugin 'davidhalter/jedi-vim' " autoCompletion
-    Plugin 'vimwiki/vimwiki'  " for wiki making
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -129,76 +122,3 @@ let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보
 let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_theme='hybrid'
 
-"""""""""""""""""""""
-" Plugin: vim-wiki
-"""""""""""""""""""""
-" 로컬 리더 키 설정은 취향이니 각자 마음에 드는 키로 설정한다
-let maplocalleader = "\\"
-let g:vimwiki_list = [
-    \ {
-        \ 'path': $HOME.'/projects/my-wiki.wiki/',
-        \ 'syntax': 'markdown',
-        \ 'ext': '.md'
-    \ }
-\]
-" vimwiki의 conceallevel 을 끄는 쪽이 좋다
-let g:vimwiki_conceallevel = 0
-
-command! WikiIndex :VimwikiIndex
-
-function! NewTemplate()
-    let l:wiki_directory = v:false
-
-    echo g:vimwiki_list
-    for wiki in g:vimwiki_list
-        echo $HOME
-        echo wiki.path
-        echo expand('%:p:h') . '/' 
-        if expand('%:p:h') . '/' =~ wiki.path
-            echo "This file is under the wiki path"
-            let l:wiki_directory = v:true
-            break
-        endif
-    endfor
-
-    if !l:wiki_directory
-        return
-    endif
-
-    echo "Current line: ".line("$")
-    if line("$") > 1
-        return
-    endif
-
-    let l:template = []
-    call add(l:template, '---')
-    call add(l:template, 'date    : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
-    call add(l:template, 'updated : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
-    call add(l:template, '---')
-    call add(l:template, '# TOC')
-    call add(l:template, '[[_TOC_]]')
-    call add(l:template, '')
-    call add(l:template, '# ')
-    call setline(1, l:template)
-    execute 'normal! G'
-    execute 'normal! $'
-
-    echom 'new wiki page has created'
-endfunction
-
-function! LastModified()
-    if &modified
-        echo "markdown updated time modified"
-        let save_cursor = getpos(".")
-        let n = min([10, line("$")])
-        exe 'keepjumps 1,' . n . 's#^\(.\{,10}updated : \).*#\1' .
-            \ strftime('%Y-%m-%d %H:%M:%S +0900') . '#e'
-        call histdel('search', -1)
-        call setpos('.', save_cursor)
-    endif
-endfun
-
-augroup vimwikiauto
-    autocmd BufWritePre *wiki/*.md call LastModified()
-    autocmd BufRead,BufNewFile *wiki/*.md call NewTemplate()
-augroup END
