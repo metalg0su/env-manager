@@ -1,13 +1,4 @@
 """""""""""""""""""""
-" Indentation options
-"""""""""""""""""""""
-set autoindent " New lines inherit the indentation of previous lines.
-set expandtab " Convert tabs to spaces.
-set shiftwidth=4 " When shifting, indent using four spaces.
-set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
-set tabstop=4 " Indent using four spaces.
-
-"""""""""""""""""""""
 " Search options
 """""""""""""""""""""
 set hlsearch " Enable search highlighting.
@@ -45,7 +36,6 @@ set mouse=a " Enable mouse for scrolling and resizing.
 """""""""""""""""""""
 " Code Folding Options
 """""""""""""""""""""
-set foldmethod=indent " Fold based on indention levels.
 set foldnestmax=3 "  Only fold up to three nested levels.
 set foldlevel=2
 set nofoldenable " Disable folding by default.
@@ -54,7 +44,6 @@ set nofoldenable " Disable folding by default.
 " Miscellaneous Options
 """""""""""""""""""""
 set autoread " Automatically re-read files if unmodified inside Vim.
-set backspace=indent,eol,start " Allow backspacing over indention, line breaks and insertion start.
 set confirm "  Display a confirmation dialog when closing an unsaved file.
 set hidden " Hide files in the background instead of closing them.
 set history=1000 " Increase the undo limit.
@@ -66,7 +55,6 @@ set sts=4 "st select
 set sw=1 " 스크롤바 너비
 set autowrite " 다른 파일로 넘어갈 때 자동 저장
 set showmatch " 일치하는 괄호 하이라이팅
-set smartindent
 set softtabstop=4
 set incsearch
 
@@ -123,7 +111,6 @@ call vundle#begin()
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
-    filetype plugin indent on    " required
     " To ignore plugin indent changes, instead use:
     "filetype plugin on
 
