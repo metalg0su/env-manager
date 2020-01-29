@@ -13,7 +13,7 @@ set lazyredraw " Don’t update screen during macro and script execution.
 " Text Rendering Options
 """""""""""""""""""""
 set encoding=utf-8 " Use an encoding that supports unicode.
-set fileencodings=utf-8
+set fileencodings=utf-8,euc-kr
 set linebreak " Avoid wrapping a line in the middle of a word.
 set scrolloff=1 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=5 " The number of screen columns to keep to the left and right of the cursor.
