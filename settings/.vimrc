@@ -88,6 +88,8 @@ filetype off                  " required
  
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf  " MacOS
+
 call vundle#begin()
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
@@ -101,6 +103,7 @@ call vundle#begin()
     Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
     Plugin 'chrisbra/csv.vim' " for csv file
     Plugin 'davidhalter/jedi-vim' " autoCompletion
+    Plugin 'junegunn/fzf.vim' 
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required

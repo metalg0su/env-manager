@@ -1,13 +1,24 @@
 [alias]
+	# files
     s = status
-    ss = status -s
-    ck = checkout
-    cp = cherry-pick
-    br = branch -vv
+    a = "!git add $(git status -s | fzf -m --preview \"git diff {2}\" | awk '{print $2}')"
 
+	# branches
+	f = fetch --all
+    br = branch -vv
+    ck = checkout
+    bselect = "!f() { \
+            _height=$(stty size | awk '{print $1}');\
+            git branch | egrep -v '^\\*' | fzf --preview \"git log {1} --oneline --graph | head -n $_height\"; \
+        }; f"
+
+	# logs
 	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
     lg = log --graph --decorate --oneline
+    history = log --stat --format=short --follow
+
     sync-force = !git branch | xargs git branch -D
+    cp = cherry-pick
 
     alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
 [user]
