@@ -28,6 +28,9 @@
 [core]
 	editor = vim
 	quotepath = false
+	whitespace = trailing-space,space-before-tab
+[apply]
+	whitespace = fix
 [difftool]
     prompt = true
 [push]
