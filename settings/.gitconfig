@@ -1,13 +1,25 @@
 [alias]
+	# files
     s = status
-    ss = status -s
-    ck = checkout
-    cp = cherry-pick
-    br = branch -vv
+    a = "!git add $(git status -s | fzf -m --preview \"git diff {2}\" | awk '{print $2}')"
 
-	tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
+	# branches
+	f = fetch --all
+    br = branch -vv
+    ck = checkout
+    bselect = "!f() { \
+            _height=$(stty size | awk '{print $1}');\
+            git branch | egrep -v '^\\*' | fzf --preview \"git log {1} --oneline --graph | head -n $_height\"; \
+        }; f"
+
+	# logs
+	tree = log --all --graph --decorate --oneline
     lg = log --graph --decorate --oneline
+    history = log --stat --format=short --follow
+
     sync-force = !git branch | xargs git branch -D
+    cp = cherry-pick
+	tags = "tag --list --sort=-v:refname"
 
     alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
 [user]
@@ -16,6 +28,9 @@
 [core]
 	editor = vim
 	quotepath = false
+	whitespace = trailing-space,space-before-tab
+[apply]
+	whitespace = fix
 [difftool]
     prompt = true
 [push]
@@ -33,3 +48,8 @@
 	verbose = true
 [mergetool]
 	keepBackup = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

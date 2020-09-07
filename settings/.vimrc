@@ -13,7 +13,7 @@ set lazyredraw " Don’t update screen during macro and script execution.
 " Text Rendering Options
 """""""""""""""""""""
 set encoding=utf-8 " Use an encoding that supports unicode.
-set fileencodings=utf-8
+set fileencodings=utf-8,euc-kr
 set linebreak " Avoid wrapping a line in the middle of a word.
 set scrolloff=1 " The number of screen lines to keep above and below the cursor.
 set sidescrolloff=5 " The number of screen columns to keep to the left and right of the cursor.
@@ -88,6 +88,8 @@ filetype off                  " required
  
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf  " MacOS
+
 call vundle#begin()
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
@@ -101,6 +103,7 @@ call vundle#begin()
     Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
     Plugin 'chrisbra/csv.vim' " for csv file
     Plugin 'davidhalter/jedi-vim' " autoCompletion
+    Plugin 'junegunn/fzf.vim' 
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
