@@ -42,3 +42,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PYENV_VERSION=3.7.3
+pyenv virtualenvwrapper_lazy
+
+alias scrcpy="scrcpy --always-on-top --stay-awake --turn-screen-off"
