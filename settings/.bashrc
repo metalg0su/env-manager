@@ -42,7 +42,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PYENV_VERSION=3.7.3
-pyenv virtualenvwrapper_lazy
-
 alias scrcpy="scrcpy --always-on-top --stay-awake --turn-screen-off"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
