@@ -12,4 +12,4 @@ alias python_ctags="ctags -R --fields=+l --languages=python --python-kinds=-iv -
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias tf='terraform'
 alias joplin="joplin --profile ~/.config/joplin-desktop"
-alias venv='pyenv activate "$(basename $(pwd))"'
+alias venv='export curr_dir="$(basename $(pwd))"; pyenv activate $curr_dir || pyenv virtualenv $curr_dir'
