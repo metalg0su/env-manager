@@ -13,7 +13,7 @@
         }; f"
 
 	# logs
-	tree = log --all --decorate --oneline --graph --format=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %s %an' --date=short
+	tree = log --all --decorate --oneline --graph --format=format:'%C(auto)%h %C(dim blue)%ad%C(reset) [%C(auto)%<(50,mtrunc)%d %C(auto)%s] %C(dim white)by%C(reset) %C(dim green)%an%C(reset)' --date=short
     lg = log --graph --decorate --oneline
 	ll = log --graph --decorate --date=short --format='%C(bold blue)%h%C %C(bold green)%ad %C(auto)%d  %C(white)%s%C(reset)' -10
     history = log --stat --format=short --follow
