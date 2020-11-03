@@ -13,8 +13,9 @@
         }; f"
 
 	# logs
-	tree = log --all --graph --decorate --oneline
+	tree = log --all --decorate --oneline --graph --format=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %s %an' --date=short
     lg = log --graph --decorate --oneline
+	ll = log --graph --decorate --date=short --format='%C(bold blue)%h%C %C(bold green)%ad %C(auto)%d  %C(white)%s%C(reset)' -10
     history = log --stat --format=short --follow
 
     sync-force = !git branch | xargs git branch -D
