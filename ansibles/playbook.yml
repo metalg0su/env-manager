@@ -4,7 +4,7 @@
   vars_files:
     - vars.yml
   tasks:
-    - import_tasks: "{{ tasks_root }}/install_ubuntu_packages.yml"
-    - import_tasks: "{{ tasks_root }}/shell_config.yml"
+#    - import_tasks: "{{ tasks_root }}/install_ubuntu_packages.yml"
+#    - import_tasks: "{{ tasks_root }}/shell_config.yml"
     - import_tasks: "{{ tasks_root }}/vim_config.yml"
-    - import_tasks: "{{ tasks_root }}/tmux_config.yml"
+#    - import_tasks: "{{ tasks_root }}/tmux_config.yml"
