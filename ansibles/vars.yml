@@ -1,2 +1,4 @@
-src_file: LICENSE
 tasks_root: ./tasks
+config_root: ./settings
+
+src_file: LICENSE
