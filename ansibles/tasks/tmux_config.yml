@@ -1,14 +1,22 @@
-- name: color template - thanks for nanotech/jellybeans
-  copy:
-    src: "{{ config_root }}/.vim"
-    dest: "{{ remote_home }}"
-- name: vimrc
-  copy:
-    src: "{{ config_root }}/.vimrc"
-    dest: "{{ remote_home }}"
-- name: Install Vundle.vim
+- name: Clean tmux related settings
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_fileglob:
+    - "{{ remote_home }}/.tmux.[!.]*"
+- name: Set repo path
+  set_fact:
+    repo_path: "{{ remote_home }}/.tmux.git"
+- name: Clone Oh My Tmux - Thanks for https://github.com/gpakosz/.tmux
   git:
-    repo: "https://github.com/VundleVim/Vundle.vim.git"
-    dest: "{{ remote_home }}/.vim/bundle/Vundle.vim"
-- name: Install vim plugins
-  shell: vim +PluginInstall +qall 2> /dev/null
+    repo: "https://github.com/gpakosz/.tmux.git"
+    dest: "{{ repo_path }}"
+- name: Install base tmux configs
+  file:
+    src: "{{ repo_path }}/.tmux.conf"
+    dest: "{{ remote_home}}/.tmux.conf"
+    state: link
+- name: Copy my config
+  copy:
+    src: "{{ config_root }}/.tmux.conf.local"
+    dest: "{{ remote_home }}/.tmux.conf.local"
