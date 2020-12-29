@@ -1,0 +1,4 @@
+all:
+  hosts:
+    colony:
+      ansible_sudo_pass: metalg0su  # YOU KNOW, this is for test
