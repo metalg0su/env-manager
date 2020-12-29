@@ -6,4 +6,8 @@
   copy:
     src: "{{ config_root }}/bashrc.d"
     dest: "{{ remote_home }}"
+- name: Overwrite main .bashrc
+  copy:
+    src: "{{ config_root }}/.bashrc"
+    dest: "{{ remote_home }}"
 
