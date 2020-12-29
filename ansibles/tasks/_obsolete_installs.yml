@@ -1,0 +1,10 @@
+- name: Install terminal apps
+    become: true
+    apt:
+      name: [wget curl vim git tmux tree xclip jq htop docker.io lsof tmuxinator ctags figlet ncdu ranger neofetch w3m w3m-img]
+      state: present
+- name: Install GNOME tools
+    become: true
+    apt:
+      name: [gnome-tweak-tool gnome-shell-extensions gnome-shell-extension-dashtodock slack discord terminator qdirstat steam-launcher libreoffice]
+      state: present
