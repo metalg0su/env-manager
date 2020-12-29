@@ -1,7 +1,11 @@
+- name: Remove VIM all settings
+  file:
+    path: "{{ config_root }}/.vim"
+    state: absent
 - name: color template - thanks for nanotech/jellybeans
   copy:
-    src: "{{ config_root }}/.vim"
-    dest: "{{ remote_home }}"
+    src: "{{ config_root }}/.vim/colors"
+    dest: "{{ remote_home }}/.vim"
 - name: vimrc
   copy:
     src: "{{ config_root }}/.vimrc"
