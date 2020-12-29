@@ -8,3 +8,13 @@
     apt:
       name: [gnome-tweak-tool gnome-shell-extensions gnome-shell-extension-dashtodock slack discord terminator qdirstat steam-launcher libreoffice]
       state: present
+- name: Install build somethings tool
+    become: true
+    apt:
+      name: [make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev automake libtool lsof zlib1g-dev]
+      state: present
+- name: Install fonts and me forgot why installed them
+    become: true
+    apt:
+      name: [fonts-nanum fonts-nanum-coding fonts-nanum-extra]
+      state: present
