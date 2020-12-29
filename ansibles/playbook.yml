@@ -1,6 +1,5 @@
 ---
 - hosts: colony
-  become: true
   vars_files:
     - vars.yml
   tasks:

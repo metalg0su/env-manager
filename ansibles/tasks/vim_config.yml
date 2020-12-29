@@ -1,4 +1,4 @@
 - name: color template - thanks for nanotech/jellybeans
   copy:
     src: "{{ config_root }}/.vim"
-    dest: "{{ remote_home }}/.vim"
+    dest: "{{ remote_home }}"
