@@ -2,3 +2,7 @@
   copy:
     src: "{{ config_root }}/.vim"
     dest: "{{ remote_home }}"
+- name: vimrc
+  copy:
+    src: "{{ config_root }}/.vimrc"
+    dest: "{{ remote_home }}"
