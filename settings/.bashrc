@@ -46,3 +46,12 @@ export PYENV_VERSION=3.7.3
 pyenv virtualenvwrapper_lazy
 
 alias scrcpy="scrcpy --always-on-top --stay-awake --turn-screen-off"
+export PATH="$PATH:$HOME/flutter/bin"
+
+# ReactNative
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$HOME/Downloads/Android/android-studio/bin
