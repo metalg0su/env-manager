@@ -42,8 +42,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias scrcpy="scrcpy --always-on-top --stay-awake --turn-screen-off"
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -58,3 +56,13 @@ alias k=kubectl
 complete -F __start_kubectl k
 
 eval $(minikube -p minikube docker-env)
+
+export PATH="$PATH:$HOME/flutter/bin"
+
+# ReactNative
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$HOME/Downloads/Android/android-studio/bin

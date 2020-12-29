@@ -104,6 +104,7 @@ call vundle#begin()
     Plugin 'chrisbra/csv.vim' " for csv file
     Plugin 'davidhalter/jedi-vim' " autoCompletion
     Plugin 'junegunn/fzf.vim' 
+    Plugin 'cespare/vim-toml'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
