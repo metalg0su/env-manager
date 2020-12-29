@@ -6,3 +6,9 @@
   copy:
     src: "{{ config_root }}/.vimrc"
     dest: "{{ remote_home }}"
+- name: Install Vundle.vim
+  git:
+    repo: "https://github.com/VundleVim/Vundle.vim.git"
+    dest: "{{ remote_home }}/.vim/bundle/Vundle.vim"
+- name: Install vim plugins
+  shell: vim +PluginInstall +qall 2> /dev/null
