@@ -6,3 +6,4 @@
   copy:
     src: "{{ config_root }}/bashrc.d"
     dest: "{{ remote_home }}"
+
