@@ -7,5 +7,7 @@
 - vars.yml에서 해당 노드 이름 쓰기
 
 ## 시작
+ansible 폴더에 가서 적당히 ansible 런타임을 설치한 다음..
+
 `$ ansible-playbook playbook.yml -i inventory.yml -K`
 - `-K`: sudo 필요할 때 사용할 passphrase
