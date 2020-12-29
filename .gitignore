@@ -3,3 +3,4 @@ bundle/
 .netrwhist
 syntax/
 .idea
+venv/

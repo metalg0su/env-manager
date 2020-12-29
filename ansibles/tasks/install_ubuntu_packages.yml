@@ -1,0 +1,4 @@
+- name: required packages
+  apt:
+    name: [git, net-tools, vim]
+    state: present

@@ -1,0 +1,8 @@
+- name: bash settings - alias
+  copy:
+    src: "../{{ src_file }}"
+    dest: "/home/metalg0su/{{ src_file }}"
+- name: bash settings - bashrc
+  copy:
+    src: "../{{ src_file }}"
+    dest: "/home/metalg0su/{{ src_file }}"
