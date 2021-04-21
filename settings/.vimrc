@@ -58,6 +58,8 @@ set showmatch " 일치하는 괄호 하이라이팅
 set softtabstop=4
 set incsearch
 
+set backspace=indent,eol,start
+
 
 """""""""""""""""""""
 " Shortcuts
