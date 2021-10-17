@@ -300,3 +300,6 @@ bind e set-window-option synchronize-panes
 # border settings
 set -g pane-border-format "#P: #T #{pane_current_command}"
 set -g pane-border-status top 
+
+# tmux copy to clipboard
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
