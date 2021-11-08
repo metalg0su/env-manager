@@ -66,3 +66,20 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/Downloads/Android/android-studio/bin
+
+# Ghidra
+export PATH=$PATH:$HOME/projects/ghidra_9.2.2_PUBLIC
+
+
+# MacMini zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Android for Mac Mini
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+
+# git auto complete
+if [ -z $HOME/git-completion.bash ]; then
+ echo "no git autocomplete.."
+else
+ source $HOME/git-completion.bash
+fi
