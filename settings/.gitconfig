@@ -12,6 +12,8 @@
 	
 	com = "commit -am 'auto commit'"
 	coma = "!git commit --amend"
+
+	drop = "!git restore --staged $1 && git restore $1"
 	
 	# branches
 	f = fetch --all
