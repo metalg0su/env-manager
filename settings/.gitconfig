@@ -2,7 +2,17 @@
 	# files
     s = status
     a = "!git add $(git status -s | fzf -m --preview \"git diff {2}\" | awk '{print $2}')"
-
+	au = "!git add -u"
+	auc = "!git au && git commit"
+	sta = "!git stash"
+	staa = "!git stash --include-untracked"
+	stap = "!git stash pop"
+	stad = "!git stash drop"
+	shows = "!git show stash"
+	
+	com = "commit -am 'auto commit'"
+	coma = "!git commit --amend"
+	
 	# branches
 	f = fetch --all
     br = branch -vv
@@ -17,7 +27,7 @@
     lg = log --graph --decorate --oneline
     history = log --stat --format=short --follow
 
-    sync-force = !git branch | xargs git branch -D
+    sync-force = "!git prune && git fetch && git branch | xargs git branch -D"
     cp = cherry-pick
 	tags = "tag --list --sort=-v:refname"
 
