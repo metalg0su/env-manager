@@ -65,6 +65,12 @@ set incsearch
 nnoremap / /\v
 vnoremap / /\v
 
+noremap <F1> :NERDTreeToggle<CR>
+noremap <C-a> :Git blame<CR> " git-fugitive
+let g:NERDCreateDefaultMappings = 0
+noremap <C-_> :NERDCommenterComment<CR>
+
+
 """""""""""""""""""""
 " Scripts && Functions
 """""""""""""""""""""
@@ -100,11 +106,17 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'aklt/plantuml-syntax' " uml syntax
     Plugin 'ctrlpvim/ctrlp.vim' " global finder
-    Plugin 'scrooloose/nerdcommenter' " add comment char, depending its extensions 
+	Plugin 'preservim/nerdcommenter'
     Plugin 'chrisbra/csv.vim' " for csv file
     Plugin 'davidhalter/jedi-vim' " autoCompletion
     Plugin 'junegunn/fzf.vim' 
     Plugin 'cespare/vim-toml'
+	Plugin 'majutsushi/tagbar'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'nathanaelkane/vim-indent-guides'
+	Plugin 'airblade/vim-gitgutter'
+	Plugin 'tpope/vim-fugitive'
+	Plugin 'blueyed/vim-diminactive'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
