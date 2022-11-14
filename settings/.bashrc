@@ -67,8 +67,15 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/Downloads/Android/android-studio/bin
 
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+# MacMini zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export PATH="$(pyenv root)/shims:$PATH"
+# Android for Mac Mini
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+
+# git auto complete
+if [ -z $HOME/git-completion.bash ]; then
+ echo "no git autocomplete.."
+else
+ source $HOME/git-completion.bash
+fi
