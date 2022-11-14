@@ -13,3 +13,4 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias tf='terraform'
 alias joplin="joplin --profile ~/.config/joplin-desktop"
 alias venv='export curr_dir="$(basename $(pwd))"; pyenv activate $curr_dir || pyenv virtualenv $curr_dir'
+alias docker-the-world="docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)"
