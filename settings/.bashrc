@@ -78,21 +78,12 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 if [ -z $HOME/git-completion.bash ]; then
  echo "no git autocomplete.."
 else
+ echo "yes git autocomplete.."
  source $HOME/git-completion.bash
 fi
-
-# MacMini zsh warning
-export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Android for Mac Mini
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-
-# git auto complete
-if [ -z $HOME/git-completion.bash ]; then
- echo "no git autocomplete.."
-else
- source $HOME/git-completion.bash
-fi
 
 # Joplin
 export PATH=$PATH:$HOME/.joplin-bin/bin
