@@ -12,6 +12,8 @@
 	
 	com = "commit -am 'auto commit'"
 	coma = "!git commit --amend"
+
+	drop = "!git restore --staged $1 && git restore $1"
 	
 	# branches
 	f = fetch --all
@@ -27,7 +29,7 @@
     lg = log --graph --decorate --oneline
     history = log --stat --format=short --follow
 
-    sync-force = "!git prune && git fetch && git branch | xargs git branch -D"
+    sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
     cp = cherry-pick
 	tags = "tag --list --sort=-v:refname"
 
