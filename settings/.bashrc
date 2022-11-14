@@ -73,11 +73,8 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 # git auto complete
-if [ -z $HOME/git-completion.bash ]; then
- echo "no git autocomplete.."
-else
- echo "yes git autocomplete.."
- source $HOME/git-completion.bash
+if [ -f $HOME/.git-completion.bash ]; then
+ source $HOME/.git-completion.bash
 fi
 
 # Joplin
