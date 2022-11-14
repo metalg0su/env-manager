@@ -4,6 +4,7 @@
     a = "!git add $(git status -s | fzf -m --preview \"git diff {2}\" | awk '{print $2}')"
 	au = "!git add -u"
 	auc = "!git au && git commit"
+    addnw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 	sta = "!git stash"
 	staa = "!git stash --include-untracked"
 	stap = "!git stash pop"
@@ -30,6 +31,8 @@
     history = log --stat --format=short --follow
 
     sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
+	sync-tags = "!git tag -l | xargs git tag -d && git fetch -t"
+	sync-sub = "!git submodule update --remote"
     cp = cherry-pick
 	tags = "tag --list --sort=-v:refname"
 
