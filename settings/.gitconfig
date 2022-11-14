@@ -28,7 +28,9 @@
     lg = log --graph --decorate --oneline
     history = log --stat --format=short --follow
 
-    sync-force = "!git prune && git fetch && git branch | xargs git branch -D"
+    sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
+	sync-tags = "!git tag -l | xargs git tag -d && git fetch -t"
+	sync-sub = "!git submodule update --remote"
     cp = cherry-pick
 	tags = "tag --list --sort=-v:refname"
 
