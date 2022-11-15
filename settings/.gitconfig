@@ -12,7 +12,7 @@
 	drop = "!git restore --staged $1 && git restore $1"
 	
 	# stash
-	staa = "!git stash --include-untracked"
+	staa = "!git stash --include-untracked"  # stash append
 	stap = "!git stash pop"
 	stad = "!git stash drop"
 
