@@ -5,12 +5,13 @@
 	au = "!git add -u"
 	auc = "!git au && git commit"
     addnw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+	# stash
 	sta = "!git stash"
 	staa = "!git stash --include-untracked"
 	stap = "!git stash pop"
 	stad = "!git stash drop"
 	shows = "!git show stash"
-	
+	# commit
 	com = "commit -am 'auto commit'"
 	coma = "!git commit --amend"
 
