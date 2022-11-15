@@ -5,12 +5,14 @@
 	au = "!git add -u"
 	auc = "!git au && git commit"
     addnw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+
 	# stash
 	sta = "!git stash"
 	staa = "!git stash --include-untracked"
 	stap = "!git stash pop"
 	stad = "!git stash drop"
 	shows = "!git show stash"
+
 	# commit
 	com = "commit -am 'auto commit'"
 	coma = "!git commit --amend"
@@ -26,18 +28,19 @@
             git branch | egrep -v '^\\*' | fzf --preview \"git log {1} --oneline --graph | head -n $_height\"; \
         }; f"
 
-	# logs
+	# inspection
 	tree = log --all --graph --decorate --oneline
     lg = log --graph --decorate --oneline
     history = log --stat --format=short --follow
 
+	# sync
     sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
 	sync-tags = "!git tag -l | xargs git tag -d && git fetch -t"
 	sync-sub = "!git submodule update --remote"
-    cp = cherry-pick
-	tags = "tag --list --sort=-v:refname"
 
 	# Miscellaneous
+    cp = cherry-pick
+	tags = "tag --list --sort=-v:refname"
     alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
 [user]
 	email = metalg0su@gmail.com
