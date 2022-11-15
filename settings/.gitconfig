@@ -6,17 +6,16 @@
 	auc = "!git au && git commit"
     addnw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
 
+	# commit
+	com = "commit -am 'auto commit'"
+	coma = "!git commit --amend"
+	drop = "!git restore --staged $1 && git restore $1"
+	
 	# stash
 	staa = "!git stash --include-untracked"
 	stap = "!git stash pop"
 	stad = "!git stash drop"
 
-	# commit
-	com = "commit -am 'auto commit'"
-	coma = "!git commit --amend"
-
-	drop = "!git restore --staged $1 && git restore $1"
-	
 	# branches
     bra = branch -vv
     ck = checkout
