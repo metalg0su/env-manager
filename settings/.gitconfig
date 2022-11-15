@@ -20,8 +20,7 @@
 	drop = "!git restore --staged $1 && git restore $1"
 	
 	# branches
-	f = fetch --all
-    br = branch -vv
+    bra = branch -vv
     ck = checkout
     bselect = "!f() { \
             _height=$(stty size | awk '{print $1}');\
