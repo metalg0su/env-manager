@@ -62,8 +62,6 @@ export PATH="$PATH:$HOME/flutter/bin"
 # ReactNative
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
-# export PATH=$PATH:$ANDROID_HOME/tools
-# export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/build-tools/30.0.3
 export PATH=$PATH:$HOME/Downloads/Android/android-studio/bin
@@ -75,23 +73,8 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 # git auto complete
-if [ -z $HOME/git-completion.bash ]; then
- echo "no git autocomplete.."
-else
- source $HOME/git-completion.bash
-fi
-
-# MacMini zsh warning
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
-# Android for Mac Mini
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-
-# git auto complete
-if [ -z $HOME/git-completion.bash ]; then
- echo "no git autocomplete.."
-else
- source $HOME/git-completion.bash
+if [ -f $HOME/.git-completion.bash ]; then
+ source $HOME/.git-completion.bash
 fi
 
 # Joplin
