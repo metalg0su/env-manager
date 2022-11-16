@@ -5,37 +5,39 @@
 	au = "!git add -u"
 	auc = "!git au && git commit"
     addnw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
-	sta = "!git stash"
-	staa = "!git stash --include-untracked"
-	stap = "!git stash pop"
-	stad = "!git stash drop"
-	shows = "!git show stash"
-	
+
+	# commit
 	com = "commit -am 'auto commit'"
 	coma = "!git commit --amend"
-
-	drop = "!git restore --staged $1 && git restore $1"
+	drop = "!git restore --staged $1 && git restore $1"  # 대상의 stage 변경 사항을 되돌림
 	
+	# stash
+	staa = "!git stash --include-untracked"  # stash append
+	stap = "!git stash pop"
+	stad = "!git stash drop"
+
 	# branches
-	f = fetch --all
-    br = branch -vv
+    bra = branch -vv
     ck = checkout
     bselect = "!f() { \
             _height=$(stty size | awk '{print $1}');\
             git branch | egrep -v '^\\*' | fzf --preview \"git log {1} --oneline --graph | head -n $_height\"; \
         }; f"
 
-	# logs
+	# inspection
 	tree = log --all --graph --decorate --oneline
     lg = log --graph --decorate --oneline
-    history = log --stat --format=short --follow
+    history = log --stat --format=short --follow  # 대상의 커밋 히스토리를 봄
+	changes = "!git log $1..$2 --no-merges --pretty=format:'- %C(yellow)%h%Creset %s %C(dim)by%C(reset) %C(green)%C(bold)%an%Creset'"  # 머지 시 ChangeLog. from $2 to $1
 
+	# sync
     sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
 	sync-tags = "!git tag -l | xargs git tag -d && git fetch -t"
 	sync-sub = "!git submodule update --remote"
+
+	# Miscellaneous
     cp = cherry-pick
 	tags = "tag --list --sort=-v:refname"
-
     alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
 [user]
 	email = metalg0su@gmail.com
