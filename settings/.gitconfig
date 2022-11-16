@@ -9,7 +9,7 @@
 	# commit
 	com = "commit -am 'auto commit'"
 	coma = "!git commit --amend"
-	drop = "!git restore --staged $1 && git restore $1"
+	drop = "!git restore --staged $1 && git restore $1"  # 대상의 stage 변경 사항을 되돌림
 	
 	# stash
 	staa = "!git stash --include-untracked"  # stash append
@@ -29,7 +29,6 @@
     lg = log --graph --decorate --oneline
     history = log --stat --format=short --follow  # 대상의 커밋 히스토리를 봄
 	changes = "!git log $1..$2 --no-merges --pretty=format:'- %C(yellow)%h%Creset %s %C(dim)by%C(reset) %C(green)%C(bold)%an%Creset'"  # 머지 시 ChangeLog. from $2 to $1
-
 
 	# sync
     sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
