@@ -27,7 +27,9 @@
 	# inspection
 	tree = log --all --graph --decorate --oneline
     lg = log --graph --decorate --oneline
-    history = log --stat --format=short --follow
+    history = log --stat --format=short --follow  # 대상의 커밋 히스토리를 봄
+	changes = "!git log $1..$2 --no-merges --pretty=format:'- %C(yellow)%h%Creset %s %C(dim)by%C(reset) %C(green)%C(bold)%an%Creset'"  # 머지 시 ChangeLog. from $2 to $1
+
 
 	# sync
     sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
