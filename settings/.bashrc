@@ -60,7 +60,8 @@ eval $(minikube -p minikube docker-env)
 export PATH="$PATH:$HOME/flutter/bin"
 
 # ReactNative
-export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/build-tools/30.0.3
@@ -82,3 +83,6 @@ export PATH=$PATH:$HOME/.joplin-bin/bin
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"  # gsed as default --^
 
 bind -f ~/.inputrc
+
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+export PATH=$PATH:$JAVA_HOME/bin
