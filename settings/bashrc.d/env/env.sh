@@ -18,15 +18,12 @@ get_staged_symbol() {
 }
 
 get_current_branch_symbol() {
-	git symbolic-ref -q HEAD &> /dev/null
-	#local_name=$(git rev-parse --abbrev-ref --symbolic-full-name HEAD)
-	if [[ $? -ne "0" ]]; then
-	#if [[ "${local_name}" -eq "HEAD" ]]; then
-		echo "✖ $(git rev-parse --short HEAD)"
-	else
-		echo "$(git branch --show-current)"
-		#echo "${local_name}"
+	branch=$(git branch --show-current)
+	if [[ -z "${branch}" ]]; then
+		branch="✖ $(git rev-parse --short HEAD)"
 	fi
+
+	echo "${branch}"
 }
 
 get_commit_diff_counts() {
