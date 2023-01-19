@@ -17,19 +17,31 @@ get_staged_symbol() {
 	fi
 }
 
-get_current_branch_symbol() {
+is_detached() {
 	branch=$(git branch --show-current)
 	if [[ -z "${branch}" ]]; then
-		branch="✖ $(git rev-parse --short HEAD)"
+		return 1;
 	fi
+	return 0;
+}
 
-	echo "${branch}"
+get_current_branch_symbol() {
+	is_detached
+	if [[ $? -eq 0 ]]; then
+		echo "$(git branch --show-current)"
+	else
+		echo "✖ $(git rev-parse --short HEAD)"
+	fi
 }
 
 get_commit_diff_counts() {
-	remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+	is_detached
+	if [[ $? -eq "1" ]]; then
+		return 0;
+	fi
 
 	result=""
+	remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
 	after=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c1)
 	if [[ "${after}" -ne "0" ]]; then
 		result="${result}↑${after}"
