@@ -19,11 +19,31 @@ get_staged_symbol() {
 
 get_current_branch_symbol() {
 	git symbolic-ref -q HEAD &> /dev/null
+	#local_name=$(git rev-parse --abbrev-ref --symbolic-full-name HEAD)
 	if [[ $? -ne "0" ]]; then
+	#if [[ "${local_name}" -eq "HEAD" ]]; then
 		echo "✖ $(git rev-parse --short HEAD)"
 	else
 		echo "$(git branch --show-current)"
+		#echo "${local_name}"
 	fi
+}
+
+get_commit_diff_counts() {
+	remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+
+	result=""
+	after=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c1)
+	if [[ "${after}" -ne "0" ]]; then
+		result="${result}↑${after}"
+	fi
+
+	before=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c3)
+	if [[ "${before}" -ne "0" ]]; then
+		result="${result}↓${before}"
+	fi
+
+	echo "${result}"
 }
 
 parse_git_branch() {
@@ -33,6 +53,11 @@ parse_git_branch() {
 	fi
 
 	result="($(get_current_branch_symbol))"
+
+	remote_diff=$(get_commit_diff_counts)
+	if [[ -n "${remote_diff}" ]]; then
+		result="${result} ${remote_diff}"
+	fi
 
 	unstaged=$(get_unstaged_symbol)
 	if [[ -n "${unstaged}" ]]; then
@@ -44,7 +69,7 @@ parse_git_branch() {
 		result="${result} ${staged}"
 	fi
 
-	echo "${result}"
+	echo "${result} "
 }
 
 export PS1="\[\e[33m\]\u\[\e[m\]@\[\e[32;40m\]\h\[\e[m\]:\[\e[31m\]\w\[\e[m\]\[\e[36m\] \$(parse_git_branch)\\$\[\e[m\] "
