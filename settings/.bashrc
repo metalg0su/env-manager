@@ -79,3 +79,6 @@ fi
 
 # Joplin
 export PATH=$PATH:$HOME/.joplin-bin/bin
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"  # gsed as default --^
+
+bind -f ~/.inputrc

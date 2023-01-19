@@ -17,7 +17,6 @@
 	stad = "!git stash drop"
 
 	# branches
-    bra = branch -vv
     ck = checkout
     bselect = "!f() { \
             _height=$(stty size | awk '{print $1}');\
