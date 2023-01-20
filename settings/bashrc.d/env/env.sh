@@ -55,19 +55,28 @@ get_commit_diff_counts() {
 		return 0;
 	fi
 
-	result=""
-	remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
-	after=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c1)
+	local result=""
+	local remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+	local after=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c1)
 	if [[ "${after}" -ne "0" ]]; then
 		result="${result}↑${after}"
 	fi
 
-	before=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c3)
+	local before=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c3)
 	if [[ "${before}" -ne "0" ]]; then
 		result="${result}↓${before}"
 	fi
 
 	echo "${result}"
+}
+
+get_stash_symbol() {
+	local count=$(git stash list | wc -l | tr -d ' ')
+	if [[ "$count" -eq "0" ]]; then
+		return;
+	fi
+
+	echo "★${count}"
 }
 
 parse_git_branch() {
@@ -76,19 +85,24 @@ parse_git_branch() {
 		return 0;
 	fi
 
-	result="($(get_current_branch_symbol))"
+	local result=""
+	local stashed="$(get_stash_symbol)"
+	if [[ -n "${stashed}" ]]; then
+		result+=" ${stashed}"
+	fi
+	result+=" ($(get_current_branch_symbol))"
 
-	remote_diff=$(get_commit_diff_counts)
+	local remote_diff=$(get_commit_diff_counts)
 	if [[ -n "${remote_diff}" ]]; then
-		result="${result} ${remote_diff}"
+		result+=" ${remote_diff}"
 	fi
 
-	unstaged=$(get_unstaged_symbol)
+	local unstaged=$(get_unstaged_symbol)
 	if [[ -n "${unstaged}" ]]; then
 		result="${result} ${unstaged}"
 	fi
 
-	staged=$(get_staged_symbol)
+	local staged=$(get_staged_symbol)
 	if [[ -n "${staged}" ]]; then
 		result="${result} ${staged}"
 	fi
