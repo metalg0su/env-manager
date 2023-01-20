@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 get_unstaged_symbol() {
 	count=($(git diff --name-only | wc -l))
 	if [[ "${count}" -ne 0 ]]; then
