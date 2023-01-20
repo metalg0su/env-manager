@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-
+_SYMBOL_REBASE="↺"
+_SYMBOL_UNSTAGED="*"
+_SYMBOL_STAGED="+"
+_SYMBOL_DETACHED="✖ "
+_SYMBOL_AHEAD="↑"
+_SYMBOL_BEFORE="↓"
+ 
 get_unstaged_symbol() {
 	count=($(git diff --name-only | wc -l))
 	if [[ "${count}" -ne 0 ]]; then
-		echo "*${count}"
+		echo "${_SYMBOL_UNSTAGED}${count}"
 	fi
 }
 
 get_staged_symbol() {
 	count=($(git diff --name-only --cached | wc -l))
 	if [[ "${count}" -ne 0 ]]; then
-		echo "+${count}"
+		echo "${_SYMBOL_STAGED}${count}"
 	fi
 }
 
@@ -33,13 +39,13 @@ is_rebasing() {
 get_current_branch_symbol() {
 	is_rebasing
 	if [[ $? -eq "1" ]]; then
-		echo "↺"
+		echo "${_SYMBOL_REBASE}"
 		return;
 	fi
 
 	is_detached
 	if [[ $? -eq "1" ]]; then
-		echo "✖ $(git rev-parse --short HEAD)"
+		echo "${_SYMBOL_DETACHED}$(git rev-parse --short HEAD)"
 		return;
 	fi
 
@@ -56,12 +62,12 @@ get_commit_diff_counts() {
 	local remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
 	local after=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c1)
 	if [[ "${after}" -ne "0" ]]; then
-		result+="↑${after}"
+		result+="${_SYMBOL_AHEAD}${after}"
 	fi
 
 	local before=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c3)
 	if [[ "${before}" -ne "0" ]]; then
-		result+="↓${before}"
+		result+="${_SYMBOL_BEFORE}${before}"
 	fi
 
 	echo "${result}"
