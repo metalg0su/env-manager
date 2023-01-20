@@ -46,7 +46,7 @@ get_current_branch_symbol() {
 		return;
 	fi
 
-	echo "$(git branch --show-current)";;
+	echo "$(git branch --show-current)"
 }
 
 get_commit_diff_counts() {
