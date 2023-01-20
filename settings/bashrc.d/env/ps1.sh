@@ -92,32 +92,32 @@ parse_git_branch() {
 
 	local result=""
 
-	##### Stash Info #####
-	local stashed="$(get_stash_symbol)"
-	if [[ -n "${stashed}" ]]; then
-		result+=" ${stashed}"
-	fi
-
 	##### Branch Info #####
-	result+=" ($(get_current_branch_symbol))"
+	result+="($(get_current_branch_symbol)) "
 
 	##### Remote Info #####
 	local remote_diff=$(get_commit_diff_counts)
 	if [[ -n "${remote_diff}" ]]; then
-		result+=" ${remote_diff}"
+		result+="${remote_diff} "
+	fi
+
+	##### Stash Info #####
+	local stashed="$(get_stash_symbol)"
+	if [[ -n "${stashed}" ]]; then
+		result+="${stashed} "
 	fi
 
 	##### Stage Info #####
 	local unstaged=$(get_unstaged_symbol)
 	if [[ -n "${unstaged}" ]]; then
-		result+=" ${unstaged}"
+		result+="${unstaged} "
 	fi
 	local staged=$(get_staged_symbol)
 	if [[ -n "${staged}" ]]; then
-		result+=" ${staged}"
+		result+="${staged} "
 	fi
 
-	echo "${result} "
+	echo "${result}"
 }
 
 export PS1="\[\e[33m\]\u\[\e[m\]@\[\e[32;40m\]\h\[\e[m\]:\[\e[31m\]\w\[\e[m\]\[\e[36m\] \$(parse_git_branch)\\$\[\e[m\] "
