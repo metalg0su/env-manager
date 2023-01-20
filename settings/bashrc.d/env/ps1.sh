@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+
+##### SYMBOLS #####
 _SYMBOL_REBASE="↺"
 _SYMBOL_UNSTAGED="*"
 _SYMBOL_STAGED="+"
