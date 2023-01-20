@@ -25,13 +25,28 @@ is_detached() {
 	return 0;
 }
 
-get_current_branch_symbol() {
-	is_detached
-	if [[ $? -eq 0 ]]; then
-		echo "$(git branch --show-current)"
-	else
-		echo "✖ $(git rev-parse --short HEAD)"
+is_rebasing() {
+	git rebase --show-current &> /dev/null
+	if [[ $? -eq "0" ]]; then
+		return 1;
 	fi
+	return 0;
+}
+
+get_current_branch_symbol() {
+	is_rebasing
+	if [[ $? -eq "1" ]]; then
+		echo "↺"
+		return;
+	fi
+
+	is_detached
+	if [[ $? -eq "1" ]]; then
+		echo "✖ $(git rev-parse --short HEAD)"
+		return;
+	fi
+
+	echo "$(git branch --show-current)";;
 }
 
 get_commit_diff_counts() {
