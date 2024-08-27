@@ -52,10 +52,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-alias k=kubectl
-complete -F __start_kubectl k
-
-eval $(minikube -p minikube docker-env)
 
 export PATH="$PATH:$HOME/flutter/bin"
 
@@ -67,10 +63,9 @@ if [ -f $HOME/.git-completion.bash ]; then
  source $HOME/.git-completion.bash
 fi
 
-# Joplin
-export PATH=$PATH:$HOME/.joplin-bin/bin
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"  # gsed as default --^
 
+# history search with arrows
 bind -f ~/.inputrc
 
 source $HOME/.bash_completion
