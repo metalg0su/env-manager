@@ -69,3 +69,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[credential]
+	helper = osxkeychain
+[rebase]
+	instructionFormat = (%an <%ae>) %s
+[log]
+	date = local

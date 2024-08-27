@@ -52,33 +52,20 @@ export NVM_DIR="$HOME/.nvm"
 
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-alias k=kubectl
-complete -F __start_kubectl k
-
-eval $(minikube -p minikube docker-env)
 
 export PATH="$PATH:$HOME/flutter/bin"
 
-# ReactNative
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/build-tools/30.0.3
-export PATH=$PATH:$HOME/Downloads/Android/android-studio/bin
-
 # MacMini zsh warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
-
-# Android for Mac Mini
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 # git auto complete
 if [ -f $HOME/.git-completion.bash ]; then
  source $HOME/.git-completion.bash
 fi
 
-# Joplin
-export PATH=$PATH:$HOME/.joplin-bin/bin
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"  # gsed as default --^
 
+# history search with arrows
 bind -f ~/.inputrc
+
+source $HOME/.bash_completion
