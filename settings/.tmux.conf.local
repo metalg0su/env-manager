@@ -303,3 +303,5 @@ set -g pane-border-status top
 
 # tmux copy to clipboard
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+
+bind G command-prompt -I "split-window -v \; split-window -h\; select-layout tiled \;split-window -v \; split-window -h\; select-layout tiled"
