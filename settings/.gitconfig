@@ -1,4 +1,6 @@
 [alias]
+    tgz = "!f() { PROJECT_NAME=$(basename $(git rev-parse --show-toplevel)); COMMIT_HASH=$(git rev-parse --short HEAD); git archive --format=tar.gz --output=\"${PROJECT_NAME}-${COMMIT_HASH}.tgz\" HEAD; }; f"
+
 	# files
     s = status
     a = "!git add $(git status -s | fzf -m --preview \"git diff {2}\" | awk '{print $2}')"
