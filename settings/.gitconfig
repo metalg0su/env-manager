@@ -1,5 +1,5 @@
 [alias]
-    tgz = "!f() { PROJECT_NAME=$(basename $(git rev-parse --show-toplevel)); COMMIT_HASH=$(git rev-parse --short HEAD); git archive --format=tar.gz --output=\"${PROJECT_NAME}-${COMMIT_HASH}.tgz\" HEAD; }; f"
+    tgz = "!f() { PROJECT_NAME=$(basename $(git rev-parse --show-toplevel)); COMMIT_HASH=$(git rev-parse --short HEAD); git archive --prefix=${PROJECT_NAME}/ --format=tar.gz --output=\"${PROJECT_NAME}-${COMMIT_HASH}.tgz\" HEAD; }; f"
 
 	# files
     s = status
