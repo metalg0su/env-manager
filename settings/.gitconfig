@@ -1,4 +1,6 @@
 [alias]
+    tgz = "!f() { PROJECT_NAME=$(basename $(git rev-parse --show-toplevel)); COMMIT_HASH=$(git rev-parse --short HEAD); git archive --prefix=${PROJECT_NAME}/ --format=tar.gz --output=\"${PROJECT_NAME}-${COMMIT_HASH}.tgz\" HEAD; }; f"
+
 	# files
     s = status
     a = "!git add $(git status -s | fzf -m --preview \"git diff {2}\" | awk '{print $2}')"
@@ -30,7 +32,7 @@
 	changes = "!git log $1..$2 --no-merges --pretty=format:'- %C(yellow)%h%Creset %s %C(dim)by%C(reset) %C(green)%C(bold)%an%Creset'"  # 머지 시 ChangeLog. from $2 to $1
 
 	# sync
-    sync-force = "!git remote prune origin && git fetch && git branch | xargs git branch -D"
+    sync-force = "!git fetch --prune && git branch | xargs git branch -D"
 	sync-tags = "!git tag -l | xargs git tag -d && git fetch -t"
 	sync-sub = "!git submodule update --remote"
 
@@ -40,7 +42,7 @@
     alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
 [user]
 	email = metalg0su@gmail.com
-	name = Seongjun Ji
+	name = metalg0su
 [core]
 	editor = vim
 	quotepath = false
@@ -53,6 +55,9 @@
 	default = current
 [diff]
 	tool = vimdiff
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
@@ -75,3 +80,5 @@
 	instructionFormat = (%an <%ae>) %s
 [log]
 	date = local
+[fetch]
+	prune = true

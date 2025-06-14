@@ -53,7 +53,7 @@ export NVM_DIR="$HOME/.nvm"
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-export PATH="$PATH:$HOME/flutter/bin"
+export PATH="$PATH:$HOME/development/flutter/bin"
 
 # MacMini zsh warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -69,3 +69,8 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"  # gsed as default --^
 bind -f ~/.inputrc
 
 source $HOME/.bash_completion
+export JAVA_HOME=$HOME/Library/Java/JavaVirtualMachines/corretto-17.0.7/Contents/Home
+export PATH=$PATH:$JAVA_HOME
+export PATH=$PATH:$HOME/.local/bin
+
+export PATH="$(brew --prefix)/opt/arm-gcc-embedded/bin:$PATH"
