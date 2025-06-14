@@ -69,7 +69,8 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"  # gsed as default --^
 bind -f ~/.inputrc
 
 source $HOME/.bash_completion
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export JAVA_HOME=$HOME/Library/Java/JavaVirtualMachines/corretto-17.0.7/Contents/Home
 export PATH=$PATH:$JAVA_HOME
+export PATH=$PATH:$HOME/.local/bin
 
-
+export PATH="$(brew --prefix)/opt/arm-gcc-embedded/bin:$PATH"
