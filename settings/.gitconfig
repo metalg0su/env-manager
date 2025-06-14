@@ -42,7 +42,7 @@
     alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
 [user]
 	email = metalg0su@gmail.com
-	name = Seongjun Ji
+	name = metalg0su
 [core]
 	editor = vim
 	quotepath = false
