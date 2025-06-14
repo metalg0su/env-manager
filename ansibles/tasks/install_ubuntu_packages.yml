@@ -1,5 +1,0 @@
-- name: required packages
-  become: true
-  apt:
-    name: [git, net-tools, vim]
-    state: present

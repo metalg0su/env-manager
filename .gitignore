@@ -4,3 +4,4 @@ bundle/
 syntax/
 .idea
 venv/
+.DS_Store

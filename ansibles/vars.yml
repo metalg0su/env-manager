@@ -1,6 +1,0 @@
-tasks_root: ./tasks
-config_root: ./settings
-
-remote_home: /home/metalg0su
-
-src_file: LICENSE

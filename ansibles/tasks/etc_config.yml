@@ -1,4 +1,0 @@
-- name: Git config
-  copy:
-    src: "{{ config_root }}/.gitconfig"
-    dest: "{{ remote_home }}"
