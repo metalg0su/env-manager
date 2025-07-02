@@ -17,5 +17,3 @@ alias p='cd ..'
 alias h='history | fzf --reverse'
 alias vi='vim'
 alias fzf="fzf --color fg:188,bg:233,hl:103,fg+:222,bg+:234,hl+:104"
-
-alias 'P=$(poetry env activate)'

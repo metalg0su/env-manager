@@ -68,7 +68,6 @@ nnoremap / /\v
 vnoremap / /\v
 
 noremap <F1> :NERDTreeToggle<CR>
-noremap <C-a> :Git blame<CR> " git-fugitive
 let g:NERDCreateDefaultMappings = 0
 noremap <C-_> :NERDCommenterComment<CR>
 

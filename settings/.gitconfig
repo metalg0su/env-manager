@@ -20,10 +20,12 @@
 
 	# branches
     ck = checkout
-    bselect = "!f() { \
-            _height=$(stty size | awk '{print $1}');\
-            git branch | egrep -v '^\\*' | fzf --preview \"git log {1} --oneline --graph | head -n $_height\"; \
-        }; f"
+	bck = "!f() { \
+		_height=$(stty size | awk '{print $1}');\
+		BRANCH=$(git branch | egrep -v '^\\*' | fzf --preview \"git log {1} --oneline --graph | head -n $_height\"); \
+		if [ -n \"$BRANCH\" ]; then git checkout $BRANCH; fi; \
+	}; f"
+
 
 	# inspection
 	tree = log --all --graph --decorate --oneline

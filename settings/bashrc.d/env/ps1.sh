@@ -8,18 +8,25 @@ _SYMBOL_DETACHED="✖ "
 _SYMBOL_AHEAD="↑"
 _SYMBOL_BEFORE="↓"
  
-get_unstaged_symbol() {
-	count=($(git diff --name-only | wc -l))
-	if [[ "${count}" -ne 0 ]]; then
-		echo "${_SYMBOL_UNSTAGED}${count}"
+get_status_symbols() {
+	local status_output
+	status_output=$(git status --porcelain 2>/dev/null)
+	
+	local unstaged_count=0
+	local staged_count=0
+	
+	if [[ -n "${status_output}" ]]; then
+		while IFS= read -r line; do
+			[[ "${line:0:1}" != " " ]] && ((staged_count++))
+			[[ "${line:1:1}" != " " ]] && ((unstaged_count++))
+		done <<< "${status_output}"
 	fi
-}
-
-get_staged_symbol() {
-	count=($(git diff --name-only --cached | wc -l))
-	if [[ "${count}" -ne 0 ]]; then
-		echo "${_SYMBOL_STAGED}${count}"
-	fi
+	
+	local result=""
+	[[ "${unstaged_count}" -ne 0 ]] && result+="${_SYMBOL_UNSTAGED}${unstaged_count} "
+	[[ "${staged_count}" -ne 0 ]] && result+="${_SYMBOL_STAGED}${staged_count} "
+	
+	echo "${result}"
 }
 
 is_detached() {
@@ -61,23 +68,34 @@ get_commit_diff_counts() {
 	fi
 
 	local result=""
-	local remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
-	local after=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c1)
-	if [[ "${after}" -ne "0" ]]; then
-		result+="${_SYMBOL_AHEAD}${after}"
-	fi
-
-	local before=$(git rev-list --left-right --count  HEAD...${remote_name} | cut -c3)
-	if [[ "${before}" -ne "0" ]]; then
-		result+="${_SYMBOL_BEFORE}${before}"
+	local remote_name
+	remote_name=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+	
+	if [[ -n "${remote_name}" ]]; then
+		local counts
+		counts=$(git rev-list --left-right --count HEAD...${remote_name} 2>/dev/null)
+		if [[ -n "${counts}" ]]; then
+			local ahead=$(echo "${counts}" | cut -d$'\t' -f1)
+			local behind=$(echo "${counts}" | cut -d$'\t' -f2)
+			
+			if [[ "${ahead}" -ne "0" ]]; then
+				result+="${_SYMBOL_AHEAD}${ahead}"
+			fi
+			if [[ "${behind}" -ne "0" ]]; then
+				result+="${_SYMBOL_BEFORE}${behind}"
+			fi
+		fi
 	fi
 
 	echo "${result}"
 }
 
 get_stash_symbol() {
-	local count=$(git stash list | wc -l | tr -d ' ')
-	if [[ "$count" -eq "0" ]]; then
+	local count
+	count=$(git stash list 2>/dev/null | wc -l)
+	count=${count// /}
+	
+	if [[ "${count}" -eq "0" ]]; then
 		return;
 	fi
 
@@ -85,10 +103,7 @@ get_stash_symbol() {
 }
 
 parse_git_branch() {
-	git branch &> /dev/null
-	if [[ $? -ne "0" ]]; then
-		return 0;
-	fi
+	git rev-parse --is-inside-work-tree &>/dev/null || return 0
 
 	local result=""
 
@@ -108,13 +123,9 @@ parse_git_branch() {
 	fi
 
 	##### Stage Info #####
-	local unstaged=$(get_unstaged_symbol)
-	if [[ -n "${unstaged}" ]]; then
-		result+="${unstaged} "
-	fi
-	local staged=$(get_staged_symbol)
-	if [[ -n "${staged}" ]]; then
-		result+="${staged} "
+	local status_symbols=$(get_status_symbols)
+	if [[ -n "${status_symbols}" ]]; then
+		result+="${status_symbols}"
 	fi
 
 	echo "${result}"
