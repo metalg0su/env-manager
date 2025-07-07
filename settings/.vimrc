@@ -107,13 +107,11 @@ call vundle#begin()
 
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'aklt/plantuml-syntax' " uml syntax
-    Plugin 'ctrlpvim/ctrlp.vim' " global finder
 	Plugin 'preservim/nerdcommenter'
     Plugin 'chrisbra/csv.vim' " for csv file
-    Plugin 'davidhalter/jedi-vim' " autoCompletion
-    Plugin 'junegunn/fzf.vim' 
+    Plugin 'aklt/plantuml-syntax' " uml syntax
     Plugin 'cespare/vim-toml'
+    Plugin 'junegunn/fzf.vim'
 	Plugin 'majutsushi/tagbar'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'nathanaelkane/vim-indent-guides'
