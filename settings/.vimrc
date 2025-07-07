@@ -3,6 +3,7 @@
 """""""""""""""""""""
 set hlsearch " Enable search highlighting.
 set ignorecase " Ignore case when searching.
+set smartcase " 대문자가 포함된 검색어는 대소문자 구분
 
 """""""""""""""""""""
 " Performance options
@@ -50,9 +51,10 @@ set history=1000 " Increase the undo limit.
 set wildignore+=.pyc,.swp " Ignore files matching these patterns when opening files based on a glob pattern.
 
 set wildmode=longest,list
-set ts=4 "tag select
-set sts=4 "st select
-set sw=1 " 스크롤바 너비
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab  " 탭을 스페이스로 변환
 set autowrite " 다른 파일로 넘어갈 때 자동 저장
 set showmatch " 일치하는 괄호 하이라이팅
 set softtabstop=4
