@@ -1,3 +1,11 @@
 [".vim/colors/jellybeans.vim"]
 type = "file"
 url = "https://raw.githubusercontent.com/nanotech/jellybeans.vim/refs/heads/master/colors/jellybeans.vim"
+
+[".vim/bundle/Vundle.vim"]
+type = "git-repo"
+url = "https://github.com/VundleVim/Vundle.vim.git"
+
+[".vim/bundle/Vundle.vim" .pull]
+args = ["--depth", "1"]
+
