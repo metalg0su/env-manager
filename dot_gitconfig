@@ -1,0 +1,86 @@
+[alias]
+    tgz = "!f() { PROJECT_NAME=$(basename $(git rev-parse --show-toplevel)); COMMIT_HASH=$(git rev-parse --short HEAD); git archive --prefix=${PROJECT_NAME}/ --format=tar.gz --output=\"${PROJECT_NAME}-${COMMIT_HASH}.tgz\" HEAD; }; f"
+
+	# files
+    s = status
+    a = "!git add $(git status -s | fzf -m --preview \"git diff {2}\" | awk '{print $2}')"
+	au = "!git add -u"
+	auc = "!git au && git commit"
+    addnw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
+
+	# commit
+	com = "commit -am 'auto commit'"
+	coma = "!git commit --amend"
+	drop = "!git restore --staged $1 && git restore $1"  # 대상의 stage 변경 사항을 되돌림
+	
+	# stash
+	staa = "!git stash --include-untracked"  # stash append
+	stap = "!git stash pop"
+	stad = "!git stash drop"
+
+	# branches
+    ck = checkout
+	bck = "!f() { \
+		_height=$(stty size | awk '{print $1}');\
+		BRANCH=$(git branch | egrep -v '^\\*' | fzf --preview \"git log {1} --oneline --graph | head -n $_height\"); \
+		if [ -n \"$BRANCH\" ]; then git checkout $BRANCH; fi; \
+	}; f"
+
+
+	# inspection
+	tree = log --all --graph --decorate --oneline
+    lg = log --graph --decorate --oneline
+    history = log --stat --format=short --follow  # 대상의 커밋 히스토리를 봄
+	changes = "!git log $1..$2 --no-merges --pretty=format:'- %C(yellow)%h%Creset %s %C(dim)by%C(reset) %C(green)%C(bold)%an%Creset'"  # 머지 시 ChangeLog. from $2 to $1
+
+	# sync
+    sync-force = "!git fetch --prune && git branch | xargs git branch -D"
+	sync-tags = "!git tag -l | xargs git tag -d && git fetch -t"
+	sync-sub = "!git submodule update --remote"
+
+	# Miscellaneous
+    cp = cherry-pick
+	tags = "tag --list --sort=-v:refname"
+    alias = "!git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/'"
+[user]
+	email = metalg0su@gmail.com
+	name = metalg0su
+[core]
+	editor = vim
+	quotepath = false
+	whitespace = trailing-space,space-before-tab
+[apply]
+	whitespace = fix
+[difftool]
+    prompt = true
+[push]
+	default = current
+[diff]
+	tool = vimdiff
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[color]
+	ui = auto
+	branch = auto
+	status = auto
+[commit]
+	verbose = true
+[mergetool]
+	keepBackup = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = osxkeychain
+[rebase]
+	instructionFormat = (%an <%ae>) %s
+[log]
+	date = local
+[fetch]
+	prune = true
