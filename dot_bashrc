@@ -75,4 +75,6 @@ export PATH=$PATH:$HOME/.local/bin
 
 export PATH="$(brew --prefix)/opt/arm-gcc-embedded/bin:$PATH"
 export GPG_TTY=$(tty)
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+export PATH=$PATH:/opt/homebrew/opt/libpq/bin
 . "$HOME/.cargo/env"
