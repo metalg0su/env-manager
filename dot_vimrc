@@ -118,6 +118,7 @@ call vundle#begin()
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'blueyed/vim-diminactive'
+	Plugin 'ntpeters/vim-better-whitespace'
 
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
