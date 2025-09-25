@@ -29,3 +29,15 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$PATH:$HOME/development/flutter/bin"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="$(brew --prefix)/opt/arm-gcc-embedded/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+export PATH=$PATH:/opt/homebrew/opt/libpq/bin
+. "$HOME/.cargo/env"
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+export PATH=$PATH:$JAVA_HOME
+export PATH=$PATH:$HOME/.local/bin
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"  # gsed as default --^
+
